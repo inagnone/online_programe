@@ -23,7 +23,37 @@ public class Getzhiyinzi {
 		}
 		return list;
 	}
+	
+	static List<Integer> findyinzi(int n){
+		ArrayList<Integer> list = new ArrayList<>();
+		if(IsZhiShu.iszhishu(n)){
+			list.add(n);
+			list.add(1);
+			return list;
+		}
+		for(int i=1;i<n;i++){
+			if(n%i == 0	){
+				list.add(i);
+			}
+		}
+		return list;
+	}
+	
+	static int checkperfectNumberCheck(int n){
+		List<Integer> list = findyinzi(n);
+		int sum = 0;
+		for(int a:list){
+			sum = sum+a;
+		}
+		if(sum == n){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(findzhiyinzi(7));
+		System.out.println(findyinzi(28));
+		System.out.println(checkperfectNumberCheck(28));
 	}
 }
